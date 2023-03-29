@@ -48,17 +48,17 @@ def no_command(*args):
 
 
 def parse_input(text):
-    text_command = text.split()[0]
+    text_command = text.split()[0].lower()
     match text_command:
         case 'add':
-            return add, text.replace('add', '').split()
+            return add, text[len('add'):].split()
         case 'change':
-            return change, text.replace('change', '').split()
+            return change, text[len('change'):].split()
         case 'phone':
-            return phone, text.replace('phone', '').split()
+            return phone, text[len('phone'):].split()
         case 'exit':
-            return exit, text.replace('exit', '').split()
-    return no_command, None
+            return exit, text[len('exit'):].split()
+    return no_command, []
     
 
 def main():
